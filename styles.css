@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 :root {
   color-scheme: light;
   --cream: #fff8e8;
@@ -25,7 +26,7 @@ body {
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.85), transparent 34rem),
     linear-gradient(135deg, var(--cream), #f4cfc7 48%, #d9e4c8);
   color: var(--ink);
-  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-family: "Fredoka", sans-serif;
   transition: background 400ms ease;
 }
 
