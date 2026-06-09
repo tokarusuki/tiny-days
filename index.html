@@ -18,9 +18,16 @@
       </section>
 
       <section class="card habitat" aria-label="Creature habitat">
+        <div class="room-header">
+          <span id="time-chip">morning · clear</span>
+          <span id="personality-chip">curious tiny</span>
+        </div>
         <div class="room-line top" aria-hidden="true">╭────────────────────────╮</div>
         <pre id="creature-art" class="creature-art" aria-label="Your tiny companion"></pre>
         <div id="room-items" class="room-items" aria-live="polite"></div>
+        <button type="button" id="interactive-object" class="object-button" aria-live="polite">
+          tap the room object
+        </button>
         <div class="room-line bottom" aria-hidden="true">╰────────────────────────╯</div>
       </section>
 
@@ -45,19 +52,48 @@
         </dl>
       </section>
 
+      <section class="card controls" aria-label="Care choices">
+        <label>
+          Food
+          <select id="food-select"></select>
+        </label>
+        <label>
+          Wallpaper
+          <select id="wallpaper-select"></select>
+        </label>
+        <label>
+          Room object
+          <select id="object-select"></select>
+        </label>
+        <label>
+          Season
+          <select id="season-select"></select>
+        </label>
+      </section>
+
       <section class="actions" aria-label="Care actions">
-        <button type="button" data-action="feed">Feed a berry</button>
+        <button type="button" data-action="feed">Share food</button>
         <button type="button" data-action="play">Play softly</button>
         <button type="button" data-action="tidy">Tidy nook</button>
         <button type="button" data-action="observe">Observe</button>
+        <button type="button" data-action="adventure">Little adventure</button>
+        <button type="button" data-action="letter">Read letter</button>
       </section>
 
-      <section class="card journal" aria-labelledby="journal-title">
-        <div class="journal-heading">
-          <h2 id="journal-title">Tiny journal</h2>
-          <button type="button" id="reset-button" class="text-button">start fresh</button>
-        </div>
-        <ul id="journal-list" aria-live="polite"></ul>
+      <section class="library-grid" aria-label="Tiny records">
+        <section class="card journal" aria-labelledby="journal-title">
+          <div class="journal-heading">
+            <h2 id="journal-title">Tiny journal</h2>
+            <button type="button" id="reset-button" class="text-button">start fresh</button>
+          </div>
+          <ul id="journal-list" aria-live="polite"></ul>
+        </section>
+
+        <section class="card keepsakes" aria-labelledby="keepsakes-title">
+          <h2 id="keepsakes-title">Memories & collectibles</h2>
+          <p><strong>Collections:</strong> <span id="collection-list"></span></p>
+          <ul id="memory-list" aria-live="polite"></ul>
+        </section>
       </section>
     </main>
 
