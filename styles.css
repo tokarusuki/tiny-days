@@ -4,9 +4,10 @@
   --peach: #f7d9bd;
   --rose: #e8a6a1;
   --sage: #a9bea2;
+  --sky: #c8dff0;
   --ink: #3f352d;
   --muted: #7e6f62;
-  --paper: rgba(255, 252, 241, 0.88);
+  --paper: rgba(255, 252, 241, 0.9);
   --shadow: rgba(94, 64, 44, 0.16);
 }
 
@@ -25,15 +26,41 @@ body {
     linear-gradient(135deg, var(--cream), #f4cfc7 48%, #d9e4c8);
   color: var(--ink);
   font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  transition: background 400ms ease;
+}
+
+body[data-season="spring"] {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 34rem),
+    linear-gradient(135deg, #fff8e8, #ffd6df 45%, #cfe8bc);
+}
+
+body[data-season="summer"] {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 34rem),
+    linear-gradient(135deg, #fff3b8, #ffd0a6 48%, #b7e0d3);
+}
+
+body[data-season="autumn"] {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.78), transparent 34rem),
+    linear-gradient(135deg, #fff0c7, #e9a36f 48%, #c7b17b);
+}
+
+body[data-season="winter"] {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), transparent 34rem),
+    linear-gradient(135deg, #f8fbff, #dbe9f6 48%, #c9d4e8);
 }
 
 button,
-meter {
+meter,
+select {
   font: inherit;
 }
 
 .shell {
-  width: min(760px, 100%);
+  width: min(860px, 100%);
   display: grid;
   gap: 16px;
 }
@@ -85,6 +112,19 @@ h2 {
 .habitat {
   padding: 22px;
   text-align: center;
+  background:
+    var(--wallpaper-pattern, radial-gradient(circle, rgba(255, 255, 255, 0.42) 1px, transparent 1px)),
+    var(--paper);
+  background-size: var(--wallpaper-size, 22px 22px), auto;
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  text-transform: lowercase;
 }
 
 .room-line {
@@ -106,14 +146,30 @@ h2 {
   color: var(--muted);
 }
 
-.status {
+.object-button {
+  margin-top: 10px;
+  border: 1px dashed rgba(63, 53, 45, 0.24);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.48);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.status,
+.controls,
+.library-grid {
   display: grid;
+  gap: 16px;
+}
+
+.status {
   grid-template-columns: 1fr minmax(220px, 0.8fr);
-  gap: 20px;
   padding: 20px;
 }
 
-.status p {
+.status p,
+.keepsakes p {
   margin-bottom: 0;
   color: var(--muted);
   line-height: 1.5;
@@ -144,9 +200,30 @@ meter {
   height: 16px;
 }
 
+.controls {
+  grid-template-columns: repeat(4, 1fr);
+  padding: 16px;
+}
+
+.controls label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.controls select {
+  width: 100%;
+  border: 1px solid rgba(63, 53, 45, 0.18);
+  border-radius: 14px;
+  padding: 9px 10px;
+  background: #fffaf0;
+  color: var(--ink);
+}
+
 .actions {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
 }
 
@@ -167,16 +244,24 @@ meter {
 }
 
 .actions button:hover,
-.actions button:focus-visible {
+.actions button:focus-visible,
+.object-button:hover,
+.object-button:focus-visible {
   transform: translateY(-2px);
-  box-shadow: inset 0 -3px 0 rgba(63, 53, 45, 0.1), 0 12px 24px var(--shadow);
+  box-shadow: inset 0 -3px 0 rgba(63, 53, 45, 0.08), 0 12px 24px var(--shadow);
 }
 
-.actions button:active {
+.actions button:active,
+.object-button:active {
   transform: translateY(1px);
 }
 
-.journal {
+.library-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.journal,
+.keepsakes {
   padding: 18px 20px;
 }
 
@@ -194,7 +279,8 @@ meter {
   text-decoration: underline;
 }
 
-#journal-list {
+#journal-list,
+#memory-list {
   display: grid;
   gap: 8px;
   margin: 0;
@@ -203,13 +289,26 @@ meter {
   line-height: 1.45;
 }
 
-@media (max-width: 680px) {
+#collection-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+@media (max-width: 760px) {
   body {
     padding: 16px;
   }
 
   .status,
-  .actions {
+  .controls,
+  .actions,
+  .library-grid {
     grid-template-columns: 1fr;
+  }
+
+  .room-header {
+    display: grid;
+    justify-content: center;
   }
 }
