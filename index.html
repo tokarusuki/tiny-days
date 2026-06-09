@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiny Days</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell" aria-labelledby="game-title">
+      <section class="hero">
+        <p class="eyebrow">a gentle browser companion</p>
+        <h1 id="game-title">Tiny Days</h1>
+        <p class="intro">
+          Care for a small friend through soft routines, little surprises, and
+          unhurried days.
+        </p>
+      </section>
+
+      <section class="card habitat" aria-label="Creature habitat">
+        <div class="room-line top" aria-hidden="true">╭────────────────────────╮</div>
+        <pre id="creature-art" class="creature-art" aria-label="Your tiny companion"></pre>
+        <div id="room-items" class="room-items" aria-live="polite"></div>
+        <div class="room-line bottom" aria-hidden="true">╰────────────────────────╯</div>
+      </section>
+
+      <section class="card status" aria-label="Companion status">
+        <div>
+          <h2 id="mood-label">Feeling cozy</h2>
+          <p id="status-copy">Your companion blinks up at you.</p>
+        </div>
+        <dl class="stats">
+          <div>
+            <dt>Fullness</dt>
+            <dd><meter id="fullness" min="0" max="100" value="70"></meter></dd>
+          </div>
+          <div>
+            <dt>Joy</dt>
+            <dd><meter id="joy" min="0" max="100" value="70"></meter></dd>
+          </div>
+          <div>
+            <dt>Tidiness</dt>
+            <dd><meter id="tidiness" min="0" max="100" value="70"></meter></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="actions" aria-label="Care actions">
+        <button type="button" data-action="feed">Feed a berry</button>
+        <button type="button" data-action="play">Play softly</button>
+        <button type="button" data-action="tidy">Tidy nook</button>
+        <button type="button" data-action="observe">Observe</button>
+      </section>
+
+      <section class="card journal" aria-labelledby="journal-title">
+        <div class="journal-heading">
+          <h2 id="journal-title">Tiny journal</h2>
+          <button type="button" id="reset-button" class="text-button">start fresh</button>
+        </div>
+        <ul id="journal-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

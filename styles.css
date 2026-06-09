@@ -1,0 +1,215 @@
+:root {
+  color-scheme: light;
+  --cream: #fff8e8;
+  --peach: #f7d9bd;
+  --rose: #e8a6a1;
+  --sage: #a9bea2;
+  --ink: #3f352d;
+  --muted: #7e6f62;
+  --paper: rgba(255, 252, 241, 0.88);
+  --shadow: rgba(94, 64, 44, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.85), transparent 34rem),
+    linear-gradient(135deg, var(--cream), #f4cfc7 48%, #d9e4c8);
+  color: var(--ink);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+button,
+meter {
+  font: inherit;
+}
+
+.shell {
+  width: min(760px, 100%);
+  display: grid;
+  gap: 16px;
+}
+
+.hero {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-size: clamp(2.4rem, 9vw, 5rem);
+  line-height: 0.9;
+  text-shadow: 4px 4px 0 rgba(255, 255, 255, 0.52);
+}
+
+h2 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.intro {
+  max-width: 56ch;
+  margin-inline: auto;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.card {
+  border: 2px solid rgba(63, 53, 45, 0.14);
+  border-radius: 24px;
+  background: var(--paper);
+  box-shadow: 0 18px 50px var(--shadow);
+}
+
+.habitat {
+  padding: 22px;
+  text-align: center;
+}
+
+.room-line {
+  color: var(--muted);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.creature-art {
+  min-height: 142px;
+  margin: 12px 0 8px;
+  color: var(--ink);
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  line-height: 1.15;
+}
+
+.room-items {
+  min-height: 1.5em;
+  color: var(--muted);
+}
+
+.status {
+  display: grid;
+  grid-template-columns: 1fr minmax(220px, 0.8fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.status p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.stats {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.stats div {
+  display: grid;
+  gap: 4px;
+}
+
+.stats dt {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.stats dd {
+  margin: 0;
+}
+
+meter {
+  width: 100%;
+  height: 16px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.actions button,
+.text-button {
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.actions button {
+  min-height: 48px;
+  padding: 10px 14px;
+  background: #fff5dc;
+  box-shadow: inset 0 -3px 0 rgba(63, 53, 45, 0.1), 0 8px 18px var(--shadow);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.actions button:hover,
+.actions button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: inset 0 -3px 0 rgba(63, 53, 45, 0.1), 0 12px 24px var(--shadow);
+}
+
+.actions button:active {
+  transform: translateY(1px);
+}
+
+.journal {
+  padding: 18px 20px;
+}
+
+.journal-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.text-button {
+  padding: 6px 10px;
+  background: transparent;
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+#journal-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+@media (max-width: 680px) {
+  body {
+    padding: 16px;
+  }
+
+  .status,
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}
